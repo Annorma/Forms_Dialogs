@@ -127,5 +127,20 @@ namespace _02_Dialogs
         {
             richTextBox1.DeselectAll();
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
+        }
     }
 }   
