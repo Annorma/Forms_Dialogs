@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing.Printing;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,7 +37,7 @@ namespace _02_Dialogs
             var result = dialog.ShowDialog();
 
             if (result == DialogResult.OK)
-                richTextBox1.SelectionFont = dialog.Font;
+                richTextBox1.Font = dialog.Font;
         }
 
         private void colorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -98,9 +99,18 @@ namespace _02_Dialogs
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PrintDialog dialog = new PrintDialog();
+            /*PrintDialog dialog = new PrintDialog();
+            dialog.ShowDialog();*/
+            string printText = richTextBox1.Text;
+            PrintDocument p = new PrintDocument();
+            PrintPreviewDialog pp = new PrintPreviewDialog();
+            p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+            {
+                e1.Graphics.DrawString(printText, new Font(richTextBox1.Font.FontFamily, richTextBox1.Font.Size, richTextBox1.Font.Style, richTextBox1.Font.Unit), new SolidBrush(Color.Black), new RectangleF(0, 0, p.DefaultPageSettings.PrintableArea.Width, p.DefaultPageSettings.PrintableArea.Height));
+            };
 
-            dialog.ShowDialog();
+            pp.Document = p;
+            if (pp.ShowDialog() == DialogResult.OK) pp.Document.Print();
         }
 
         private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -141,6 +151,11 @@ namespace _02_Dialogs
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
         }
     }
 }   
