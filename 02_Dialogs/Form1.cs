@@ -19,18 +19,6 @@ namespace _02_Dialogs
             InitializeComponent();
         }
 
-        /*private void button5_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-
-            var result = dialog.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                MessageBox.Show("Folder: " + dialog.SelectedPath);
-            }
-        }*/
-
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FontDialog dialog = new FontDialog();
