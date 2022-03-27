@@ -39,17 +39,19 @@ namespace _02_Dialogs
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
 
-            dialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*|RTF Files (*.rft)|*.rtf|PDF Files (*.pdf)|*.pdf";
-            //dialog.Multiselect = true;
-            var result = dialog.ShowDialog();
+                OpenFileDialog dialog = new OpenFileDialog();
 
-            if (result == DialogResult.OK)
-            {
-                string text = File.ReadAllText(dialog.FileName);
-                richTextBox1.Text = text;
-            }
+                dialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*|RTF Files (*.rft)|*.rtf|PDF Files (*.pdf)|*.pdf";
+                //dialog.Multiselect = true;
+                var result = dialog.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    string text = File.ReadAllText(dialog.FileName);
+                    richTextBox1.Text = text;
+                }
+
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -143,7 +145,49 @@ namespace _02_Dialogs
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Clear();
+            if (richTextBox1.Text == "")
+            {
+                richTextBox1.Clear();
+            }
+            else
+            {
+                DialogResult res = MessageBox.Show("Save changes?", "Confirmation", MessageBoxButtons.YesNo);
+
+                if (res == DialogResult.Yes)
+                {
+                    SaveFileDialog dialog = new SaveFileDialog();
+
+                    dialog.DefaultExt = ".rtf";
+                    var result = dialog.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        //File.WriteAllText(dialog.FileName, richTextBox1.Text);
+                        richTextBox1.SaveFile(dialog.FileName);
+                    }
+                }
+                if (res == DialogResult.No)
+                {
+                    richTextBox1.Clear();
+                }
+            }
+        }
+
+        private void zoomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.ZoomFactor < 63)
+                    richTextBox1.ZoomFactor++;
+        }
+
+        private void zoomToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.ZoomFactor > 1)
+                    richTextBox1.ZoomFactor--;
+        }
+
+        private void defaultZoomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ZoomFactor = 1;
         }
     }
 }   

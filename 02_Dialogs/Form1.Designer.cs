@@ -53,6 +53,10 @@ namespace _02_Dialogs
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.defaultZoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +67,7 @@ namespace _02_Dialogs
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.formatToolStripMenuItem,
+            this.viewToolStripMenuItem,
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
             this.toolStripMenuItem3});
@@ -257,6 +262,37 @@ namespace _02_Dialogs
             this.richTextBox1.TabIndex = 8;
             this.richTextBox1.Text = "";
             // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zoomToolStripMenuItem,
+            this.zoomToolStripMenuItem1,
+            this.defaultZoomToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // zoomToolStripMenuItem
+            // 
+            this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zoomToolStripMenuItem.Text = "Zoom+";
+            this.zoomToolStripMenuItem.Click += new System.EventHandler(this.zoomToolStripMenuItem_Click);
+            // 
+            // zoomToolStripMenuItem1
+            // 
+            this.zoomToolStripMenuItem1.Name = "zoomToolStripMenuItem1";
+            this.zoomToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.zoomToolStripMenuItem1.Text = "Zoom-";
+            this.zoomToolStripMenuItem1.Click += new System.EventHandler(this.zoomToolStripMenuItem1_Click);
+            // 
+            // defaultZoomToolStripMenuItem
+            // 
+            this.defaultZoomToolStripMenuItem.Name = "defaultZoomToolStripMenuItem";
+            this.defaultZoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.defaultZoomToolStripMenuItem.Text = "Default zoom";
+            this.defaultZoomToolStripMenuItem.Click += new System.EventHandler(this.defaultZoomToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,6 +338,10 @@ namespace _02_Dialogs
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zoomToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zoomToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem defaultZoomToolStripMenuItem;
     }
 }
 
